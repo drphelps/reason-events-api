@@ -4,7 +4,7 @@
 var Dotenv = require("dotenv");
 var Process = require("process");
 var Js_option = require("bs-platform/lib/js/js_option.js");
-var MnstrUtils = require("@ecliptic/mnstr/src/MnstrUtils.bs.js");
+var MnstrUtils = require("@dphunkt/mnstr-core/src/MnstrUtils.bs.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var ParseDatabaseUrl = require("parse-database-url");
 
@@ -16,7 +16,7 @@ function getEnvVar(key, fallback) {
   return Js_option.getWithDefault(fallback, Js_primitive.undefined_to_opt(Process.env[key]));
 }
 
-var url = getEnvVar("DATABASE_URL", "postgres://trailmap:trailmap@localhost:5432/trailmap");
+var url = getEnvVar("DATABASE_URL", "postgres://reason-events:reason-events@localhost:5432/events");
 
 var config = ParseDatabaseUrl(url);
 

@@ -12,7 +12,8 @@
     }
   ],
   "bs-dependencies": [
-    "@ecliptic/mnstr",
+    "@dphunkt/mnstr-core",
+    "@dphunkt/mnstr-server",
     "bs-abstract",
     "bs-apollo-server-express",
     "bs-chalk",
@@ -27,6 +28,8 @@
   "reason": {
     "react-jsx": 2
   },
-  "bsc-flags": ["-bs-super-errors"],
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
   "refmt": 3
 }

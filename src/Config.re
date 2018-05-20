@@ -8,10 +8,17 @@ open Mnstr.Utils;
 config({"silent": true});
 
 let getEnvVar = (key, fallback) =>
-  Js.Option.getWithDefault(fallback, Js.Dict.get(Node.Process.process##env, key));
+  Js.Option.getWithDefault(
+    fallback,
+    Js.Dict.get(Node.Process.process##env, key),
+  );
 
 module Database = {
-  let url = getEnvVar("DATABASE_URL", "postgres://trailmap:trailmap@localhost:5432/trailmap");
+  let url =
+    getEnvVar(
+      "DATABASE_URL",
+      "postgres://reason-events:reason-events@localhost:5432/events",
+    );
   let config = parseDbUrl(url);
   let name = config##database;
   let username = config##user;

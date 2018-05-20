@@ -31,14 +31,16 @@
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
-    "@ecliptic/mnstr": "*",
+    "@dphunkt/mnstr-client": "*",
+    "@dphunkt/mnstr-core": "*",
+    "@dphunkt/mnstr-server": "*",
     "apollo-errors": "^1.7.1",
     "apollo-server-express": "^1.3.2",
     "body-parser": "^1.18.2",
     "bs-abstract": "^0.12.0",
     "bs-apollo-server-express": "^0.3.1",
     "bs-chalk": "^0.2.1",
-    "bs-express": "^0.4.1",
+    "bs-express": "0.7.2",
     "bs-graphql": "^0.3.1",
     "bs-graphql-scalar": "^0.2.2",
     "bs-graphql-tools": "^0.3.1",
@@ -84,10 +86,12 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.4.3",
     "lint-staged": "^7.0.0",
     "nodemon": "^1.17.1"
   },
   "resolutions": {
+    "bs-express": "^0.7.2",
     "graphql": "0.11.7"
   },
   "lint-staged": {

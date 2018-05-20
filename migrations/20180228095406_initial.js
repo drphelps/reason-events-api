@@ -1,8 +1,4 @@
-const MigrationUtils = require('../src/utils/MigrationUtils')
-
 exports.up = function (knex, Promise) {
-  const schema = MigrationUtils.schema(knex)
-
   return (
     // Kick off a promise chain
     Promise.resolve()
@@ -13,8 +9,12 @@ exports.up = function (knex, Promise) {
       // User
       .then(() =>
         knex.schema.withSchema('events').createTable('user', function (table) {
-          const columns = schema(table)
-          columns.primaryUuid()
+          table
+            .uuid('id')
+            .primary()
+            .notNullable()
+            .unique()
+            .defaultTo(knex.raw('uuid_generate_v4()'))
 
           table.timestamps(true, true)
 
@@ -51,8 +51,12 @@ exports.up = function (knex, Promise) {
       // Event
       .then(() =>
         knex.schema.withSchema('events').createTable('event', function (table) {
-          const columns = schema(table)
-          columns.primaryUuid()
+          table
+            .uuid('id')
+            .primary()
+            .notNullable()
+            .unique()
+            .defaultTo(knex.raw('uuid_generate_v4()'))
 
           table.timestamps(true, true)
 
@@ -73,9 +77,13 @@ exports.up = function (knex, Promise) {
 
           table.text('description').comment(`The Event''s description.`)
 
+          table.uuid('owner')
+
+          table.foreign('owner').references('id').inTable('events.user')
+
           // relationships
-          columns.foreignUuid({column: 'owner', reference: {column: 'id', table: 'events.user'}})
-            .comment('The User that created the Event.')
+          // columns.foreignUuid({ column: 'owner', reference: { column: 'id', table: 'events.user' } })
+          //   .comment('The User that created the Event.')
         })
       )
   )

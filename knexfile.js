@@ -2,7 +2,7 @@ const parseDbUrl = require('parse-database-url')
 
 const dbUrl
   = process.env.DATABASE_URL
-  || 'postgres://reason-events:reason-events@localhost:5432/reason-events'
+  || 'postgres://reason-events:reason-events@localhost:5432/events'
 
 const dbConfig = parseDbUrl(dbUrl)
 
